@@ -8,8 +8,7 @@ Member::Member() : Unit(){
     _keys.push_back("ID");
     _keys.push_back("NAME");
 }
-Member::Member(string name) : Unit(){
-    Member();
+Member::Member(string name) : Member(){
     _name = name;
 }
 
@@ -17,14 +16,15 @@ Unit* Member::ClonePtr(){
     Member* unit = new Member();
     return (Unit*)unit;
 }
-void Member::fromVt(){
-    _id = stol(_values[0]);
-    _name = _values[1];
+void Member::fromVt(vector<string> vts){
+    _id = stol(vts[0]);
+    _name = vts[1];
 }
-void Member::toVt(){
-    _values.resize(2);
-    _values[0] = to_string(_id);
-    _values[1] = _name;
+vector<string> Member::toVt(){
+    vector<string> vts;
+    vts.push_back(to_string(_id));
+    vts.push_back(_name);
+    return vts;
 }
 
 string Member::getName(){
@@ -33,6 +33,6 @@ string Member::getName(){
 void Member::setName(string name){
     _name = name;
 }
-string Member::toString(){
-    return "0";
-}
+// string Member::toString(){
+//     return "0";
+// }

@@ -15,8 +15,8 @@ public:
     BorrowReturn();
     BorrowReturn(long memberId, long bookId, string date, int br);
     virtual Unit* ClonePtr();
-    virtual void fromVt();
-    virtual void toVt();
+    virtual void fromVt(vector<string> vts);
+    virtual vector<string> toVt();
     long getMemberId();
     void setMemberId(long memberId);
     long getBookId();
@@ -25,7 +25,7 @@ public:
     void setDate(string date);
     int getBR();
     void setBR(int br);
-    string toString();
+    // string toString();
 };
 
 #endif //project_businessobject_BorrowReturn_h_

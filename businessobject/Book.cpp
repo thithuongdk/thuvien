@@ -9,8 +9,7 @@ Book::Book() : Unit(){
     _keys.push_back("NAME");
     _keys.push_back("PRICE");
 }
-Book::Book(string name, long price) : Unit(){
-    Book();
+Book::Book(string name, long price) : Book(){
     _name = name;
     _price = price;
 }
@@ -19,16 +18,17 @@ Unit* Book::ClonePtr(){
     Book* unit = new Book();
     return (Unit*)unit;
 }
-void Book::fromVt(){
-    _id = stol(_values[0]);
-    _name = _values[1];
-    _price = stol(_values[2]);
+void Book::fromVt(vector<string> vts){
+    _id = stol(vts[0]);
+    _name = vts[1];
+    _price = stol(vts[2]);
 }
-void Book::toVt(){
-    _values.resize(3);
-    _values[0] = to_string(_id);
-    _values[1] = _name;
-    _values[2] = to_string(_price);
+vector<string> Book::toVt(){
+    vector<string> vts;
+    vts.push_back(to_string(_id));
+    vts.push_back(_name);
+    vts.push_back(to_string(_price));
+    return vts;
 }
 
 string Book::getName(){

@@ -9,6 +9,8 @@
 #include "IOData.h"
 #include <vector>
 #include <iostream>
+#include <algorithm>    // std::sort
+#include <map>
 using namespace std;
 
 class Control{
@@ -21,9 +23,9 @@ public:
     void init();
     void home();
     int q1_CRUD();
-    int q2();
-    int q3();
-    int q4();
+    int q2_BackupRestore();
+    int q3_MostBorrow();
+    int q4_MostDebt();
 };
 
 #endif //project_dataprocess_Control_h_

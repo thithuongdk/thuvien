@@ -11,8 +11,7 @@ BorrowReturn::BorrowReturn() : Unit(){
     _keys.push_back("DATE");
     _keys.push_back("BRROW/RETURN");
 }
-BorrowReturn::BorrowReturn(long memberId, long bookId, string date, int br) : Unit(){
-    BorrowReturn();
+BorrowReturn::BorrowReturn(long memberId, long bookId, string date, int br) : BorrowReturn(){
     _memberId = memberId;
     _bookId = bookId;
     _date = date;
@@ -23,20 +22,21 @@ Unit* BorrowReturn::ClonePtr(){
     BorrowReturn* unit = new BorrowReturn();
     return (Unit*)unit;
 }
-void BorrowReturn::fromVt(){
-    _id = stol(_values[0]);
-    _memberId = stol(_values[0]);
-    _bookId = stol(_values[0]);
-    _date = _values[1];
-    _br = stoi(_values[0]);
+void BorrowReturn::fromVt(vector<string> vts){
+    _id = stol(vts[0]);
+    _memberId = stol(vts[0]);
+    _bookId = stol(vts[0]);
+    _date = vts[1];
+    _br = stoi(vts[0]);
 }
-void BorrowReturn::toVt(){
-    _values.resize(5);
-    _values[0] = to_string(_id);
-    _values[1] = to_string(_memberId);
-    _values[2] = to_string(_bookId);
-    _values[3] = _date;
-    _values[4] = to_string(_br);
+vector<string> BorrowReturn::toVt(){
+    vector<string> vts;
+    vts.push_back(to_string(_id));
+    vts.push_back(to_string(_memberId));
+    vts.push_back(to_string(_bookId));
+    vts.push_back(_date);
+    vts.push_back(to_string(_br));
+    return vts;
 }
 
 long BorrowReturn::getMemberId(){

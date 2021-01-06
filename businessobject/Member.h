@@ -12,11 +12,11 @@ public:
     Member();
     Member(string name);
     virtual Unit* ClonePtr();
-    virtual void fromVt();
-    virtual void toVt();
+    virtual void fromVt(vector<string> vts);
+    virtual vector<string> toVt();
     string getName();
     void setName(string name);
-    string toString();
+    // string toString();
 };
 
 #endif //project_businessobject_Member_h_
