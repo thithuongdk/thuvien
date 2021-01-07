@@ -17,7 +17,8 @@ private:
 public:
     BaseData();
     BaseData(Unit *unit);
-    Unit* cloneUnit(); 
+    Unit* cloneUnit();
+    int toMapID();
     int toFile(string path);
     int fromFile(string path);  
     vector<Unit*> getData();

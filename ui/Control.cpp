@@ -264,22 +264,18 @@ int Control::q3_MostBorrow(){
     vector<Unit*> brs = _brData->getData();
 
     map<long , int> mapBookBorrow;
-    // for(Unit *unit : books){
-    //     mapBookBorrow[unit->getId()] = 0;
-    // } 
     for(Unit *unit : brs){
         BorrowReturn *br = (BorrowReturn *) unit;
         if(br->getBR() == 1) {
             mapBookBorrow[br->getBookId()]++;
         }
     }
-    map<long, int>::iterator it;
     sort(books.begin(),books.end(),[&mapBookBorrow](Unit *a,Unit *b){return mapBookBorrow[a->getId()] > mapBookBorrow[b->getId()];});
     _bookData->read();
     cout<< " list " << n <<" books are borrowed the most : " <<endl;
     for(int i = 0; i< books.size() && i < n; ++i){
         IOData::dOut(books[i]);
-        cout<< "\b borrowed is " << mapBookBorrow[books[i]->getId()]<< endl;
+        cout<< "                    borrowed is " << mapBookBorrow[books[i]->getId()]<< endl;
     }
     return 1;
 };
@@ -289,14 +285,10 @@ int Control::q4_MostDebt(){
     cout<< " please enter N = ";
     int n;
     cin >> n; cin.ignore();
-    // vector<Unit*> books = _bookData->getData();
     vector<Unit*> members = _memberData->getData();
     vector<Unit*> brs = _brData->getData();
 
     map<long , long> mapMemberBorrow;
-    // for(Unit *unit : members){
-    //     mapMemberBorrow[unit->getId()] = 0;
-    // } 
     for(Unit *unit : brs){
         BorrowReturn *br = (BorrowReturn *) unit;
         if(br->getBR() == 1) {
@@ -305,13 +297,12 @@ int Control::q4_MostDebt(){
             mapMemberBorrow[br->getMemberId()] += debt;
         }
     }
-    map<long, int>::iterator it;
     sort(members.begin(),members.end(),[&mapMemberBorrow](Unit *a,Unit *b){return mapMemberBorrow[a->getId()] > mapMemberBorrow[b->getId()];});
     _brData->read();
     cout<< " list " << n <<" member are debt  the most : " <<endl;
     for(int i = 0; i< members.size() && i < n; ++i){
         IOData::dOut(members[i]);
-        cout<< "            \b debt is " << mapMemberBorrow[members[i]->getId()]<< endl;
+        cout<< "                    debt is " << mapMemberBorrow[members[i]->getId()]<< endl;
     }
     return 1;
 };

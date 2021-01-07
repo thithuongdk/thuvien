@@ -116,6 +116,7 @@ int BaseData::fromFile(string path){
     const int maxSize = 255;
     char buf[maxSize];
     if(!inFile) {return 0;}
+    _maxId = 0;
     while(inFile.getline(buf,maxSize)){
         int len = ((string)buf).size();
         vector<string> vts;
@@ -133,7 +134,12 @@ int BaseData::fromFile(string path){
         }
         Unit *unit = cloneUnit();
         unit->fromVt(vts);
+        _data.push_back(unit);
+        if(unit->getId() > _maxId) {_maxId = unit->getId();}
     }
     inFile.close();
     return 1;
-};  
+};
+// int BaseData::toMapID(string path){
+//     for()
+// }
