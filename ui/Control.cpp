@@ -29,6 +29,11 @@ void Control::init(){
     _bookData->read();
     cout<< "========BR Table==========="<<endl;
     _brData->read();
+    // vector<Unit*> members = _memberData->getData();
+    // vector<Unit*>::iterator unit;
+    // unit = find(members.begin(),members.end(),[](Unit *a){return ((Member*)a)->getName() == "thuong";});
+    // Member *member = ((Member*)unit);
+    // cout << "membergetid " << member->getId();
 }
 
 void Control::home(){
